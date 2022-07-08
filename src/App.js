@@ -1,7 +1,7 @@
 import { Fragment } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { publicRoutes } from "@/routes";
-import DefaultLayout from "./components/GlobalStyles/Layout/DefaultLayout";
+import DefaultLayout from "./components/Layout/DefaultLayout";
 
 function App() {
   return (
@@ -9,7 +9,15 @@ function App() {
       <div className="App">
         <Routes>
           {publicRoutes.map((route, index) => {
-            const Layout = route.layout === null ? Fragment : DefaultLayout;
+            let Layout = DefaultLayout;
+
+            if (route.layout) {
+              Layout = route.layout;
+              console.log("HeaderOnly");
+            } else if (route.layout === null) {
+              Layout = Fragment;
+              console.log("Fragment");
+            }
             const Page = route.component;
             return (
               <Route
