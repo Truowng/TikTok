@@ -13,7 +13,6 @@ function App() {
 
             if (route.layout) {
               Layout = route.layout;
-              console.log("HeaderOnly");
             } else if (route.layout === null) {
               Layout = Fragment;
               console.log("Fragment");
