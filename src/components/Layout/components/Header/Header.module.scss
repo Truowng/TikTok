@@ -29,6 +29,7 @@
   display: flex;
   border: 1.5px solid transparent;
   transition: all ease 0.2s;
+  padding-right: 5px;
 
   &::after {
     content: "";
