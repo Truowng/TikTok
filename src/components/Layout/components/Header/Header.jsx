@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Tippy from "@tippyjs/react/headless";
 import {
   faCircleXmark,
+  faEllipsisVertical,
   faMagnifyingGlass,
   faPlus,
 } from "@fortawesome/free-solid-svg-icons";
@@ -59,6 +60,27 @@ const Header = () => {
             Upload
           </Button>
           <Button primary>Log in</Button>
+          <Tippy
+            interactive
+            visible
+            render={(attrs) => (
+              <div className={styles.searchResult} tabIndex="-1" {...attrs}>
+                <Wrapper>
+                  <h4 className={styles.searchTitle}>Accounts</h4>
+                  <AccountItem />
+                  <AccountItem />
+                  <AccountItem />
+                  <AccountItem />
+                  <AccountItem />
+                  <AccountItem />
+                </Wrapper>
+              </div>
+            )}
+          >
+            <button className={styles.moreBtn}>
+              <FontAwesomeIcon icon={faEllipsisVertical} />
+            </button>
+          </Tippy>
         </div>
       </div>
     </header>
