@@ -4,7 +4,7 @@ import Tippy from "@tippyjs/react/headless";
 import {
   faCircleXmark,
   faMagnifyingGlass,
-  faSpinner,
+  faPlus,
 } from "@fortawesome/free-solid-svg-icons";
 
 import images from "@/assets/image";
@@ -55,10 +55,10 @@ const Header = () => {
           </div>
         </Tippy>
         <div className={styles.action}>
-          <Button normal>Upload</Button>
-          <Button primary disabled>
-            Log in
+          <Button normal leftIcon={<FontAwesomeIcon icon={faPlus} />}>
+            Upload
           </Button>
+          <Button primary>Log in</Button>
         </div>
       </div>
     </header>

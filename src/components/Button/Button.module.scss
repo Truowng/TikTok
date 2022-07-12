@@ -5,6 +5,9 @@
   border-radius: 4px;
   cursor: pointer;
   transition: all ease 0.2s;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 
   + .wrapper {
     margin-left: 8px;
@@ -19,11 +22,26 @@
 
 // Button Types
 
+.rounded {
+  border-radius: 20px;
+  border: 1px solid rgba(22, 24, 35, 0.12);
+  background-color: var(--white);
+  box-shadow: 0 2px 8px rgb(0 0 0 / 6%);
+  transition: all ease 0.15s;
+
+  &:hover {
+    background-color: rgba(22, 24, 35, 0.03);
+    border-color: rgba(22, 24, 35, 0.2);
+  }
+}
+
 .primary {
   background-color: var(--primary);
   color: var(--white);
+  border-color: var(--primary);
 
   &:hover {
+    border-color: var(--primary);
     background: linear-gradient(0deg, rgba(0, 0, 0, 0.06), rgba(0, 0, 0, 0.08)),
       #fe2c55;
   }
@@ -44,8 +62,14 @@
   border: 1px solid var(--primary);
 
   &:hover {
+    border: 1px solid var(--primary);
     background-color: rgba(254, 44, 85, 0.06);
   }
+}
+
+.icon + .title,
+.title + .icon {
+  margin-left: 8px;
 }
 
 // Button Sizes

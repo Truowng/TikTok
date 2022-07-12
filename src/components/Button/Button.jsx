@@ -6,14 +6,18 @@ import clsx from "clsx";
 const Button = ({
   to,
   href,
-  onClick,
   children,
   primary,
   normal,
   outline,
+  rounded,
   small,
   large,
   disabled,
+  className,
+  leftIcon,
+  rightIcon,
+  onClick,
   ...passProps
 }) => {
   let Component = "button";
@@ -23,7 +27,11 @@ const Button = ({
   };
 
   if (disabled) {
-    delete props.onClick;
+    Object.keys(props).forEach((key) => {
+      if (key.startsWith("on") && typeof props[key] === "function") {
+        delete props[key];
+      }
+    });
   }
 
   if (to) {
@@ -35,8 +43,10 @@ const Button = ({
   }
 
   const classes = clsx(styles.wrapper, {
+    [[className]]: className,
     [styles.primary]: primary,
     [styles.outline]: outline,
+    [styles.rounded]: rounded,
     [styles.normal]: normal,
     [styles.small]: small,
     [styles.large]: large,
@@ -44,7 +54,9 @@ const Button = ({
   });
   return (
     <Component className={classes} {...props}>
-      <span>{children}</span>
+      {leftIcon && <span className={styles.icon}>{leftIcon}</span>}
+      <span className={styles.title}>{children}</span>
+      {rightIcon && <span className={styles.icon}>{rightIcon}</span>}
     </Component>
   );
 };
