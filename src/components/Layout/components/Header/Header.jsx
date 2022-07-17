@@ -6,6 +6,9 @@ import {
   faEllipsisVertical,
   faMagnifyingGlass,
   faPlus,
+  faEarthAsia,
+  faCircleQuestion,
+  faKeyboard,
 } from "@fortawesome/free-solid-svg-icons";
 
 import images from "@/assets/image";
@@ -13,6 +16,23 @@ import styles from "./Header.module.scss";
 import Wrapper from "@/components/Popper/Wrapper";
 import AccountItem from "@/components/AccountItem/AccountItem";
 import Button from "@/components/Button/Button";
+import Menu from "@/components/Popper/Menu/Menu";
+
+const MENU_ITEMS = [
+  {
+    icon: <FontAwesomeIcon icon={faEarthAsia} />,
+    title: "English",
+  },
+  {
+    icon: <FontAwesomeIcon icon={faCircleQuestion} />,
+    title: "Feedback and help",
+    to: "/feedback",
+  },
+  {
+    icon: <FontAwesomeIcon icon={faKeyboard} />,
+    title: "Keyboard shortcuts",
+  },
+];
 
 const Header = () => {
   const [searchResult, setSearchResult] = useState([]);
@@ -60,27 +80,12 @@ const Header = () => {
             Upload
           </Button>
           <Button primary>Log in</Button>
-          <Tippy
-            interactive
-            visible
-            render={(attrs) => (
-              <div className={styles.searchResult} tabIndex="-1" {...attrs}>
-                <Wrapper>
-                  <h4 className={styles.searchTitle}>Accounts</h4>
-                  <AccountItem />
-                  <AccountItem />
-                  <AccountItem />
-                  <AccountItem />
-                  <AccountItem />
-                  <AccountItem />
-                </Wrapper>
-              </div>
-            )}
-          >
+
+          <Menu items={MENU_ITEMS}>
             <button className={styles.moreBtn}>
               <FontAwesomeIcon icon={faEllipsisVertical} />
             </button>
-          </Tippy>
+          </Menu>
         </div>
       </div>
     </header>
